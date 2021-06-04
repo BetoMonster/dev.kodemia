@@ -4,6 +4,7 @@ import Header from './components/Header/'
 import SideNav from './components/SideNav/'
 import Posts from './components/Posts'
 import Listing from './components/Listing/'
+import Counter from './components/Counter'
 
 class App extends React.Component{
   render(){
@@ -21,7 +22,7 @@ class App extends React.Component{
             </div>
             <div className="col-12 col-md-9 col-lg-7 p-0 px-md-2">
               <Posts/>
-              
+              <Counter/>
             </div>
             <div className="col-lg-3 d-lg-block d-none p-0">
               <aside className="rigth-aside">

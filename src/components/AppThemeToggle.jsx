@@ -7,6 +7,7 @@ class AppThemeToggle extends React.Component{
         super(props);
       
         this.state={theme: 'light'};
+        this.togle= this.toggle.bind(this);
     }
 
     toggle(){
@@ -22,7 +23,8 @@ class AppThemeToggle extends React.Component{
         return(
             <div 
                 className={`appThemeToggle d-flex justify-content-center align-item-center ${this.state.theme}`} 
-                onClick={this.toggle.bind(this)}
+                onClick={this.toggle}
+                //onClick={this.toggle.bind(this)}
             />
         
         
