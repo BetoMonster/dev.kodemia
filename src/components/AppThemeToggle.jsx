@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
 
-import './appThemeToggle.css'
-
+import "./appThemeToggle.css";
+/*
 class AppThemeToggle extends React.Component{
     constructor(props){
         super(props);
@@ -40,40 +40,33 @@ class AppThemeToggle extends React.Component{
     componentDidUpdate() {
         document.body.setAttribute('theme', this.state.theme);
     }
+}
+*/
 
-    //hooks del ciclo de vida
-    /*
-    render(){
-    }    
-    componentWillMount(){
-        const now =new Date();
-        console.log ('antes de que este en el DOM',now.getTime())
-    }
+function AppThemeToggle(props) {
+  const [theme, setTheme] = useState("light");
 
-    componentDidMount(){
-        const now =new Date();
-        console.log ('ya etoy en el DOM',now.getTime())
+  useEffect(() => {
+    document.body.setAttribute("theme", theme);
+  }, []);
 
-    }
+  useEffect(() => {
+    document.body.setAttribute("theme", theme);
+  }, [theme]);
 
-    componentWillUpdate(){
-        const now =new Date();
-        console.log ('antes de actualizarse',now.getTime())
+  const toggle = () => {
+    const newTheme = theme === "light" ? "dark" : "light";
+    console.log(newTheme);
+    setTheme(newTheme);
+    return;
+  };
 
-    }
-
-    componentDidUpdate(){
-        const now =new Date();
-        console.log ('cuando ya me actualice',now.getTime())
-
-    }
-
-    componentWillUnmount(){
-        const now =new Date();
-        console.log ('cuando ya me estoy destruyendo',now.getTime())
-
-    }
-    */
+  return (
+    <div
+      className={`appThemeToggle d-flex justify-content-center align-item-center ${theme}`}
+      onClick={toggle}
+    />
+  );
 }
 
 export default AppThemeToggle;

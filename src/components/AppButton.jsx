@@ -1,5 +1,6 @@
-import React from 'react';
+import React from "react";
 
+/*
 class AppButton extends React.Component{
     constructor(props){
         super(props);
@@ -26,6 +27,20 @@ class AppButton extends React.Component{
         
         )
     }
+}
+*/
+function AppButton({ className: classNameProp, type, text }) {
+  const className = classNameProp ? classNameProp : "";
+
+  if (type === "anchor") {
+    return <a className={`btn btn-link ${className}`}>{text}</a>;
+  }
+
+  return (
+    <button className={`btn ${className}`} type="button">
+      {text}
+    </button>
+  );
 }
 
 export default AppButton;
