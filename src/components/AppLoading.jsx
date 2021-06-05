@@ -42,7 +42,7 @@ function AppLoading(props) {
   useEffect(() => {
     setTimeout(() => {
       setActive(false);
-    }, 2000);
+    }, 4000);
   }, []);
 
   return (
