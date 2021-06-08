@@ -3,6 +3,7 @@ import React from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Home from "./screens/Home/";
+import Challenge from "./screens/Challenge/";
 
 class App extends React.Component {
   render() {
@@ -12,6 +13,9 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/">
               <Home />
+            </Route>
+            <Route exact path="/challenge">
+              <Challenge />
             </Route>
             <Route exact path="/holi">
               <h1>HOLiiiiiiii</h1>
