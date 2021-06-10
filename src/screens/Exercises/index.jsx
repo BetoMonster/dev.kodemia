@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Pet from "../../components/Pet";
+import React, { useState, useEffect } from "react";
+//import Pet from "../../components/Pet";
 /*
 export default function Exercises() {
   const [USD, setUSD] = useState(0);
@@ -268,7 +268,7 @@ export default function Exercises() {
   );
 }
 */
-
+/*
 const petsData = {
   dogs: [
     {
@@ -321,6 +321,59 @@ export default function Exercises() {
           <div className="card" style={{ width: "18rem" }}>
             {Object.entries(petsData).map(buildPetType)}
           </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+*/
+
+export default function Exercises() {
+  const [data, setData] = useState({});
+
+  /*  const getCharacters = async () => {
+    const response = await fetch("http://rickandmortyapi.com/api/character");
+    const data = await response.json();
+    return data;
+  };*/
+
+  useEffect(() => {
+    //const jsonData = getCharacters();
+    //setData(jsonData);
+    fetch("https://rickandmortyapi.com/api/character")
+      .then((response) => response.json())
+      .then((json) => setData(json));
+  }, []);
+
+  console.log(data);
+
+  const mortiUI = (arrayData) => {
+    const newArray = arrayData.map(
+      ({ id, name, image, status, species, gender, origin }) => (
+        <div className="card col-3 m-3" key={id}>
+          <div className="card-header">
+            <h4>{name}</h4>
+          </div>
+          <div className="card-body">
+            <img src={image} />
+            <ul className="list-group list-group-flush">
+              <li className="list-group-item">Status: {status}</li>
+              <li className="list-group-item">Species: {species}</li>
+              <li className="list-group-item">Gender: {gender}</li>
+              <li className="list-group-item">Origin: {origin.name}</li>
+            </ul>
+          </div>
+        </div>
+      )
+    );
+    return newArray;
+  };
+
+  return (
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col-12 d-flex">
+          {mortiUI(data.results ? data.results : [])}
         </div>
       </div>
     </div>
