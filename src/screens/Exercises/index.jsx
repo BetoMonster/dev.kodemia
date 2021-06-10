@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import Pet from "../../components/Pet";
 /*
 export default function Exercises() {
   const [USD, setUSD] = useState(0);
@@ -51,7 +52,7 @@ export default function Exercises() {
   );
 }
 */
-
+/*
 export default function Exercises() {
   const [cardNumber, setCardNumber] = useState("1111222233334444");
   const [cardName, setCardName] = useState("NOMBRE");
@@ -153,6 +154,172 @@ export default function Exercises() {
                 </div>
               </div>
             </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+*/
+/*
+const petsData = [
+  {
+    name: "Sr. Peabody",
+    age: "5",
+  },
+  {
+    name: "Misifu",
+    age: "1",
+  },
+  {
+    name: "Solovino",
+    age: "10",
+  },
+  {
+    name: "Nefermishi",
+    age: "5",
+  },
+];
+
+export default function Exercises() {
+  const buildLIPets = ({ name, age }, index) => (
+    <li key={index} className="list-group-item">
+      Name: {name}, age: {age}
+    </li>
+  );
+
+  const petsUI = petsData.map(({ name, age }, index) => (
+    <li key={index} className="list-group-item">
+      Name: {name}, age: {age}
+    </li>
+  ));
+
+  return (
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col">
+          <div className="card" style={{ width: "18rem" }}>
+            <div className="card-header">Pets</div>
+            <ul className="list-group list-group-flush">
+              {petsData.map(buildLIPets)}
+            </ul>
+            <div className="card-header">Pets</div>
+            <ul className="list-group list-group-flush">{petsUI}</ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+*/
+/* //prueba fallida
+const petsData = {
+  dogs: [
+    {
+      name: "Sr. Peabody",
+      age: "5",
+    },
+    {
+      name: "Solovino",
+      age: "10",
+    },
+  ],
+  cats: [
+    {
+      name: "Misifu",
+      age: "1",
+    },
+    {
+      name: "Nefermishi",
+      age: "5",
+    },
+  ],
+};
+
+export default function Exercises() {
+  const petsUI = () => {
+    for (const key in petsData) {
+      <React.Fragment>
+        <div className="card-header">{key}</div>;
+        <ul className="list-group list-group-flush">
+          {petsData[key].map(({ name, age }, index) => {
+            console.log(name, age);
+            return (
+              <li key={index} className="list-group-item">
+                Name: {name}, age: {age}
+              </li>
+            );
+          })}
+        </ul>
+      </React.Fragment>;
+    }
+  };
+
+  return (
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col">
+          <div className="card" style={{ width: "18rem" }}>
+            {petsUI}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+*/
+
+const petsData = {
+  dogs: [
+    {
+      name: "Sr. Peabody",
+      age: "5",
+    },
+    {
+      name: "Solovino",
+      age: "10",
+    },
+  ],
+  cats: [
+    {
+      name: "Misifu",
+      age: "1",
+    },
+    {
+      name: "Nefermishi",
+      age: "5",
+    },
+  ],
+  parrots: [
+    {
+      name: "Garzilazo",
+      age: "1",
+    },
+    {
+      name: "Pancho",
+      age: "5",
+    },
+  ],
+};
+
+export default function Exercises() {
+  const buildPetType = ([type, pets], index) => (
+    <React.Fragment key={index}>
+      <div className="card-header">{type}</div>
+      <ul className="list-group list-group-flush">
+        {pets.map((pet, index) => (
+          <Pet pet={pet} key={index} index={index} />
+        ))}
+      </ul>
+    </React.Fragment>
+  );
+
+  return (
+    <div className="container">
+      <div className="row justify-content-center">
+        <div className="col">
+          <div className="card" style={{ width: "18rem" }}>
+            {Object.entries(petsData).map(buildPetType)}
           </div>
         </div>
       </div>
