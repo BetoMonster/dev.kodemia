@@ -331,18 +331,18 @@ export default function Exercises() {
 export default function Exercises() {
   const [data, setData] = useState({});
 
-  /*  const getCharacters = async () => {
+  const getCharacters = async () => {
     const response = await fetch("http://rickandmortyapi.com/api/character");
     const data = await response.json();
     return data;
-  };*/
+  };
 
-  useEffect(() => {
+  useEffect(async () => {
     //const jsonData = getCharacters();
-    //setData(jsonData);
-    fetch("https://rickandmortyapi.com/api/character")
+    setData(await getCharacters);
+    /*fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
-      .then((json) => setData(json));
+      .then((json) => setData(json));*/
   }, []);
 
   console.log(data);
@@ -372,7 +372,7 @@ export default function Exercises() {
   return (
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-12 d-flex">
+        <div className="col-12 d-flex flex-wrap">
           {mortiUI(data.results ? data.results : [])}
         </div>
       </div>

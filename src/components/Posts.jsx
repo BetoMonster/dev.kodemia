@@ -2,7 +2,7 @@ import React from "react";
 
 import AppCard from "./AppCard";
 
-const postData = {
+const postsData = {
   "-MYqojsWP7dh2rTAPT1D": {
     content: "Excelente post!",
     creationDate: "14/04/2021",
@@ -138,8 +138,38 @@ class Posts extends React.Component {
     console.log(props);
     this.props = props;
   }
+
   render() {
     const image = this.props.className ? this.props.className : "";
+
+    /*const postsUI = () => {
+      for (const key in postsData) {
+        {
+          postsData[key].map(({ content, post }, index) => {
+            console.log(post);
+            return (
+              <div className="card my-2" key={key}>
+                <div className="card-body">
+                  <img
+                    className="card-img-top"
+                    src="https://res.cloudinary.com/practicaldev/image/fetch/s--F2RRta4a--/c_imagga_scale,f_auto,fl_progressive,h_420,q_auto,w_1000/https://thevaluable.dev/images/2021/02_vim_advanced/vim-advanced.jpg"
+                    alt="Card image cap"
+                  />
+                  <h5 className="card-title">{content}</h5>
+                  <p className="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <a href="#" className="btn btn-primary">
+                    Go somewhere
+                  </a>
+                </div>
+              </div>
+            );
+          });
+        }
+      }
+    };*/
 
     return (
       <main>
