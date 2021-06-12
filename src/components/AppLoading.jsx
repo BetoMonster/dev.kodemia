@@ -1,6 +1,5 @@
-//import React from 'react';
 import React, { useState, useEffect } from "react";
-import "./appLoading.css";
+import "./appLoadding.css";
 
 /*class AppLoading extends React.Component{
     constructor(props){
@@ -37,17 +36,17 @@ import "./appLoading.css";
 function AppLoading(props) {
   const [active, setActive] = useState(true);
 
-  const clasActive = active ? "active" : "";
+  const classActive = active ? "active" : "";
 
   useEffect(() => {
     setTimeout(() => {
       setActive(false);
-    }, 4000);
+    }, 2000);
   }, []);
 
   return (
     <div
-      className={`Loading ${clasActive} align-items-center justify-content-center`}
+      className={`loading ${active} align-items-center justify-content-center`}
     >
       <div className="spinner-border" role="status">
         <span className="visually-hidden">Loading...</span>

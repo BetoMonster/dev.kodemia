@@ -338,11 +338,31 @@ export default function Exercises() {
   };
 
   useEffect(async () => {
-    //const jsonData = getCharacters();
+    
     setData(await getCharacters);
     /*fetch("https://rickandmortyapi.com/api/character")
       .then((response) => response.json())
       .then((json) => setData(json));*/
+
+    fetch(
+      "https://react-11g-default-rtdb.firebaseio.com/posts/-MbsbfEEflmBxBS4Yxn4.json",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/JSON",
+        },
+        body: JSON.stringify({
+          title: "New Post Edited",
+          image: "https://picsum.photos/id/433/400/500",
+          description:
+            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, facilis odio quas dolor odit repellendus",
+          author: "Beto Barrera",
+        }),
+      }
+    )
+      .then((response) => response.json())
+      .catch((error) => console.log(error))
+      .then((json) => console.log(json));
   }, []);
 
   console.log(data);
