@@ -1,34 +1,33 @@
 import React from "react";
 
+import { useHistory } from "react-router";
+
 import AppCard from "./AppCard";
 
-class Posts extends React.Component {
-  constructor(props) {
-    super(props);
-  }
+export default function Posts(props) {
+  const history = useHistory();
 
-  buildLI([key, { title, description }]) {
+  const buildLI = ([key, { title, description, image }]) => {
     return (
-      <li key={key}>
-        <AppCard>
+      <div className="card my-2" key={key}>
+        <div className="card-body">
+          <img className="card-img-top" src={image} alt="Card image cap" />
           <h5 className="card-title">{title}</h5>
           <p className="card-text">{description}</p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
-        </AppCard>
-      </li>
+          <button
+            onClick={() => history.push(`/posts/${key}`)}
+            className="btn btn-primary"
+          >
+            Detail
+          </button>
+        </div>
+      </div>
     );
-  }
+  };
 
-  render() {
-    console.log(this.props);
-    return (
-      <ul className="d-flex flex-column">
-        {this.props.data.reverse().map(this.buildLI)}
-      </ul>
-    );
-  }
+  return (
+    <ul className="d-flex flex-column">{props.data.reverse().map(buildLI)}</ul>
+  );
 }
 
 /*const postsUI = () => {
@@ -59,5 +58,3 @@ class Posts extends React.Component {
         }
       }
     };*/
-
-export default Posts;
